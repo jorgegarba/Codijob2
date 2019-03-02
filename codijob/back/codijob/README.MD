@@ -6,7 +6,7 @@
 
 - Ejecutar el comando "tsc -w"
 
-##Lanzar el proyecto
+## Lanzar el proyecto
 
 - Ejecutar el comando "npm start" ó
 - "nodemon dist/index.js"
