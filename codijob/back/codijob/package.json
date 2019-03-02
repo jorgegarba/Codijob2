@@ -1,0 +1,24 @@
+{
+  "name": "codijob",
+  "version": "1.0.0",
+  "description": "Back-End del proyecto CodiJob",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./dist/index.js"
+  },
+  "keywords": [
+    "CODIGO",
+    "TECSUP",
+    "CODIJOB",
+    "BACKEND",
+    "NODE"
+  ],
+  "author": "Jorge Garnica",
+  "license": "MIT",
+  "dependencies": {
+    "@types/express": "^4.16.1",
+    "@types/node": "^11.10.4",
+    "express": "^4.16.4"
+  }
+}
