@@ -16,6 +16,5 @@ var controller_home = {
 // SI USAMOS 
 // => exports var controller_home = .....
 // En otro archivo lo importamos como:
-// => Import {controller_home} from 'ruta_del_archivo';
+// => import {controller_home} from 'ruta_del_archivo';
 module.exports = controller_home;
-
