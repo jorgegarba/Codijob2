@@ -8,6 +8,12 @@ import {router_skill} from './api/routes/skill';
 // Importamos la libreria desde node_modules
 var express = require('express');
 var app = express();
+var bodyParser = require('body-parser');
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+// parse application/json
+app.use(bodyParser.json());
+
 
 // Realizando la Conexion a MySql;
 var mysql = require('mysql');

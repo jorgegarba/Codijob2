@@ -1,41 +1,41 @@
 export class Skill{
-    private _skill_id:number;
-    private _skill_nom:string;
-    private _skill_desc:string;
-    private _skill_img:string;
+    private skill_id:number;
+    private skill_nom:string;
+    private skill_desc:string;
+    private skill_img:string;
 
     constructor(){
-        this._skill_id= 0;
-        this._skill_nom= "";
-        this._skill_desc= "";
-        this._skill_img= "";
+        this.skill_id= 0;
+        this.skill_nom= "";
+        this.skill_desc= "";
+        this.skill_img= "";
     }
 
-    get skill_id():number{
-        return this._skill_id;
+    get skill_Id():number{
+        return this.skill_id;
     }
-    set skill_id(_skill_id:number){
-        this._skill_id = _skill_id;
-    }
-
-    get skill_nom():string{
-        return this._skill_nom;
-    }
-    set skill_nom(_skill_nom:string){
-        this._skill_nom = _skill_nom;
+    set skill_Id(skill_id:number){
+        this.skill_id = skill_id;
     }
 
-    get skill_desc():string{
-        return this._skill_desc;
+    get skill_Nom():string{
+        return this.skill_nom;
     }
-    set skill_desc(_skill_desc:string){
-        this._skill_desc = _skill_desc;
+    set skill_Nom(skill_nom:string){
+        this.skill_nom = skill_nom;
     }
 
-    get skill_img():string{
-        return this._skill_img;
+    get skill_Desc():string{
+        return this.skill_desc;
     }
-    set skill_img(_skill_img:string){
-        this._skill_img = _skill_img;
+    set skill_Desc(skill_desc:string){
+        this.skill_desc = skill_desc;
+    }
+
+    get skill_Img():string{
+        return this.skill_img;
+    }
+    set skill_Img(skill_img:string){
+        this.skill_img = skill_img;
     }
 }

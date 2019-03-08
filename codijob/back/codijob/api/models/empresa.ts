@@ -1,33 +1,33 @@
 export class Empresa{
-    private _emp_id:number;
-    private _emp_nom:string;
-    private _emp_img:string;
+    private emp_id:number;
+    private emp_nom:string;
+    private emp_img:string;
     
     constructor(){
-        this._emp_id=0;
-        this._emp_nom="";
-        this._emp_img="";
+        this.emp_id=0;
+        this.emp_nom="";
+        this.emp_img="";
     }
 
-    get emp_id():number{
-        return this._emp_id;
+    get emp_Id():number{
+        return this.emp_id;
     }
-    set emp_id(_emp_id:number){
-        this._emp_id = _emp_id;
-    }
-
-    get emp_nom():string{
-        return this._emp_nom;
-    }
-    set emp_nom(_emp_nom:string){
-        this._emp_nom = _emp_nom;
+    set emp_Id(emp_id:number){
+        this.emp_id = emp_id;
     }
 
-    get emp_img():string{
-        return this._emp_img;
+    get emp_Nom():string{
+        return this.emp_nom;
     }
-    set emp_img(_emp_img:string){
-        this._emp_img = _emp_img;
+    set emp_Nom(emp_nom:string){
+        this.emp_nom = emp_nom;
+    }
+
+    get emp_Img():string{
+        return this.emp_img;
+    }
+    set emp_Img(emp_img:string){
+        this.emp_img = emp_img;
     }
 
     
