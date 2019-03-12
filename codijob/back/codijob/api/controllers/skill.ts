@@ -32,9 +32,24 @@ export var controller_skill = {
                 where: {
                     skill_id:req.body.skill_id
                 }
-            }).then((response:any)=>{
-                console.log(response);
-                res.send("ok");
+            }).then((respuesta:any)=>{
+                // respuesta[0] es 1 cuando se actualizado el registro correctamente
+                // respuesta[0] es 0 cuando hubo un error
+                if(respuesta[0]===1){
+                    Skill.findById(req.body.skill_id).then((skill:any)=>{
+                        let response = {
+                            message:"updated",
+                            content: skill
+                        }
+                        res.status(200).send(response);
+                    })
+                }else{
+                    let response = {
+                        message:"error",
+                        content: "error"
+                    }
+                    res.status(500).send(response);
+                }
             })
     }
 }

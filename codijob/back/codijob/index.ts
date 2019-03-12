@@ -2,6 +2,7 @@
 // importando las rutas de SKILL
 import {router_skill} from './api/routes/skill';
 import {router_home} from './api/routes/home';
+import {router_proyecto} from './api/routes/proyecto';
 
 // Importamos la libreria desde node_modules
 var express = require('express');
@@ -19,6 +20,7 @@ const PUERTO = process.env.PORT || 3700;
 
 app.use('/api',router_skill);
 app.use('/api',router_home);
+app.use('/api',router_proyecto);
 
 // listen => lanza o ejecuta el servidor WEB
 app.listen(PUERTO,()=>{

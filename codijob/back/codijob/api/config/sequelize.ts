@@ -61,7 +61,7 @@ Usuario.belongsTo(Persona, {foreignKey: 'per_id'});
 sequelize.query('SET FOREIGN_KEY_CHECKS = 0', {raw:true}).then(()=>{
     // force == true: cada vez que el proyecto inicie (npm star), toda la data y tablas, se van a borrar y crear nuevamente.
     // force == false: solo va crear las tablas y/o campos que no figuren actualmente en nuestra base de datos. No se borran los datos.
-    sequelize.sync({force:true}).then(()=>{
+    sequelize.sync({force:false}).then(()=>{
         console.log("Base de datos creada con éxito");
     }).catch(()=>{
         console.log();
