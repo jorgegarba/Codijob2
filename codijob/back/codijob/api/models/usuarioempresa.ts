@@ -1,34 +1,34 @@
-export var proyecto_model = (sequelize:any, type:any)=>{
-    return sequelize.define('t_proyecto',{
-        pro_id:{
+export var usuarioempresa_model = (sequelize:any, type:any)=>{
+    return sequelize.define('t_usuarioempresa',{
+        usuemp_id:{
             type: type.INTEGER,
             primaryKey: true,
             autoIncrement: true,
             allowNull: true
         },
-        pro_nom:
+        usuemp_cargo:
         {
-            type: type.STRING(100),
+            type: type.STRING(50),
             allowNull: true
         },
-        pro_desc:
+        usuemp_fechin:
+        {
+            type: type.DATE,
+            allowNull: true
+        },
+        usuemp_fechfin:
+        {
+            type: type.DATE,
+            allowNull: true
+        },
+        usuemp_desc:
         {
             type: type.TEXT,
-            allowNull: true
-        },
-        pro_fechin:
-        {
-            type: type.DATE,
-            allowNull: true
-        },
-        pro_fechfin:
-        {
-            type: type.DATE,
             allowNull: true
         }
     },
     {        
         timestamps: true,
-        tableName:'t_proyecto'
+        tableName:'t_usuarioempresa'
     }); 
 };
