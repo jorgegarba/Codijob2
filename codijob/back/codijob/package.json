@@ -19,6 +19,7 @@
   "dependencies": {
     "@types/sequelize": "^4.27.41",
     "body-parser": "^1.18.3",
+    "connect-multiparty": "^2.2.0",
     "express": "^4.16.4",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.5",
