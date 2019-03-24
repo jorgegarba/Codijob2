@@ -6,6 +6,7 @@ import {router_proyecto} from './api/routes/proyecto';
 import {router_proyectoskill} from './api/routes/proyectoskill';
 import {router_persona} from './api/routes/persona';
 import { router_usuario } from './api/routes/usuario';
+import { router_auth } from './api/routes/auth';
 
 // Importamos la libreria desde node_modules
 var express = require('express');
@@ -35,6 +36,7 @@ app.use('/api',router_proyecto);
 app.use('/api',router_proyectoskill);
 app.use('/api',router_persona);
 app.use('/api',router_usuario);
+app.use('/api',router_auth);
 
 // listen => lanza o ejecuta el servidor WEB
 app.listen(PUERTO,()=>{

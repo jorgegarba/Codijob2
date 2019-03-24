@@ -1,4 +1,7 @@
 const crypto = require('crypto');
+const jwt = require('jsonwebtoken');
+
+import {Persona} from '../config/sequelize';
 
 export var usuario_model = (sequelize:any, type:any)=>{
     let usuarioModel =  sequelize.define('t_usuario',{
@@ -71,6 +74,29 @@ export var usuario_model = (sequelize:any, type:any)=>{
     usuarioModel.prototype.setPassword = function(password:string){
         this.usu_salt = crypto.randomBytes(16).toString("hex");
         this.usu_hash = crypto.pbkdf2Sync(password,this.usu_salt,1000,64,'sha512').toString('hex');
+    };
+
+    usuarioModel.prototype.validPassword = function(password:string){
+        var hash = crypto.pbkdf2Sync(password,this.usu_salt,1000,64,'sha512').toString('hex');
+        return hash === this.usu_hash;
+    };
+    
+    usuarioModel.prototype.generateJWT = function(){
+        
+        return new Promise((resolve,reject)=>{
+            Persona.findById(this.per_id).then((personaEncontrada:any)=>{
+                let payload = {
+                    usu_id: this.usu_id,
+                    per_nom_ape: personaEncontrada.per_nom +" " +personaEncontrada.per_ape,
+                    per_email: personaEncontrada.per_email
+                };
+                let token = jwt.sign(payload,'sape',{ expiresIn: '1h' });
+                resolve(token);
+            });
+        });
+
+        
+
     };
 
     return usuarioModel;

@@ -22,7 +22,8 @@ export var persona_model = (sequelize:any, type:any)=>{
         {
             type: type.STRING(45),
             allowNull: true,
-            defaultValue: "sin email"
+            defaultValue: "sin email",
+            unique: true
         },
         per_tel:
         {

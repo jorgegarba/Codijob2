@@ -13,10 +13,16 @@
           <li><a href="#" class="fa fa-twitter"></a></li>
           <li><a href="#" class="fa fa-google-plus"></a></li>
         </ul>
-        <ul class="authentication">
+
+        <ul class="authentication" *ngIf="!_sAuth.isLoggedIn()">
           <li><a href="#">Login</a></li>
           <li><a href="#">Register</a></li>
         </ul>
+        <ul class="authentication" *ngIf="_sAuth.isLoggedIn()">
+          <li><a href="">Bienvenido {{_sAuth.getUserDetails().per_nom_ape}}</a></li>
+          <li><a href="" (click)="logout()">Cerrar Sesión</a></li>
+        </ul>
+
         <div class="language"> <a href="#" class="toggle"><img src="assets/images/flags/32/US.png" alt=""> ENG</a>
           <ul>
             <li><a href="#"><img src="assets/images/flags/32/PT.png" alt=""> ENG</a></li>
