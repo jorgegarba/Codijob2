@@ -72,7 +72,7 @@ export class AuthService {
     return this._http.post("http://localhost:3700/api/auth/login",
                     credenciales,
                     {
-                      headers:misHeaders
+                      headers: misHeaders
                     });
   }
 

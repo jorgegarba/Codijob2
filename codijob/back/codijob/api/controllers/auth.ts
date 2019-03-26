@@ -44,8 +44,41 @@ export var controller_auth = {
             where:{
                 per_email: req.body.per_email
             }
-        }).then((personaEncontrada:any)=>{
-            console.log(personaEncontrada);
-        })
+        }).then((personasEncontradas:any)=>{
+            if(personasEncontradas.length > 0){
+                objPersona = personasEncontradas[0];
+                return Usuario.findAll({
+                    where:{
+                        per_id: objPersona.per_id
+                    }
+                });
+            }else{
+                let response = {
+                    message:'error',
+                    content:'El email no está registrado'
+                };
+                res.status(500).send(response);
+            }
+        }).then((usuariosEncontrados:any)=>{
+            if(usuariosEncontrados.length > 0){
+                objUsuario = usuariosEncontrados[0];
+                if(objUsuario.validPassword(req.body.usu_pass)==true){
+                    //usuario con password autentico
+
+                }else{
+                    let response = {
+                        message: 'error',
+                        content: 'Contraseña Incorrecta'
+                    }
+                    res.status(500).send(response);
+                }
+            }else{
+                let response = {
+                    message: 'error',
+                    content: 'No existe un usuario para esa persona'
+                }
+                res.status(500).send(response);
+            }
+        });
     }
 }
