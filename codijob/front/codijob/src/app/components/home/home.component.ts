@@ -23,12 +23,6 @@ export class HomeComponent implements OnInit {
 
   changeTab(evento){
     evento.preventDefault();
-    
-    // if(this.switchLogin == true){
-    //   this.switchLogin = false;
-    // }else{
-    //   this.switchLogin = true;
-    // }
     this.switchLogin = this.switchLogin ? false : true;
   }
   
@@ -49,7 +43,8 @@ export class HomeComponent implements OnInit {
 
   login(){
     this._sAuth.login(this.objCredenciales).subscribe((response:any)=>{
-      console.log(response);
+      this._sAuth.saveToken(response.token);
+      this.clearCredentials();
     });
   }
 }

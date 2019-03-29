@@ -1,4 +1,4 @@
-import {Response, Request} from 'express';
+import {Response, Request, response} from 'express';
 import {Persona, Usuario} from '../config/sequelize';
 
 export var controller_auth = {
@@ -40,14 +40,14 @@ export var controller_auth = {
     login:(req:Request, res:Response)=>{
         let objPersona = Persona.build();
         let objUsuario = Usuario.build();
-        Persona.findAll({
+        Persona.findOne({
             where:{
                 per_email: req.body.per_email
             }
-        }).then((personasEncontradas:any)=>{
-            if(personasEncontradas.length > 0){
-                objPersona = personasEncontradas[0];
-                return Usuario.findAll({
+        }).then((personaEncontrada:any)=>{
+            if(personaEncontrada){
+                objPersona = personaEncontrada;
+                return Usuario.findOne({
                     where:{
                         per_id: objPersona.per_id
                     }
@@ -58,19 +58,21 @@ export var controller_auth = {
                     content:'El email no está registrado'
                 };
                 res.status(500).send(response);
+                throw('El email no está registrado');
             }
-        }).then((usuariosEncontrados:any)=>{
-            if(usuariosEncontrados.length > 0){
-                objUsuario = usuariosEncontrados[0];
-                if(objUsuario.validPassword(req.body.usu_pass)==true){
+        }).then((usuarioEncontrado:any)=>{
+            if(usuarioEncontrado){
+                objUsuario = usuarioEncontrado;
+                if(objUsuario.validPassword(req.body.usu_pass)){
                     //usuario con password autentico
-
+                    return objUsuario.generateJWT();
                 }else{
                     let response = {
                         message: 'error',
                         content: 'Contraseña Incorrecta'
                     }
                     res.status(500).send(response);
+                    throw('Contraseña Incorrecta');
                 }
             }else{
                 let response = {
@@ -78,7 +80,17 @@ export var controller_auth = {
                     content: 'No existe un usuario para esa persona'
                 }
                 res.status(500).send(response);
+                throw('No existe un usuario para esa persona');
             }
+        }).then((token:any)=>{
+            let response = {
+                message:'success',
+                token:token
+            };
+            res.status(200).send(response);
+        }).catch((error:any)=>{
+            console.log("error");
+            console.log(error);
         });
     }
 }

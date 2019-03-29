@@ -82,7 +82,6 @@ export var usuario_model = (sequelize:any, type:any)=>{
     };
     
     usuarioModel.prototype.generateJWT = function(){
-        
         return new Promise((resolve,reject)=>{
             Persona.findById(this.per_id).then((personaEncontrada:any)=>{
                 let payload = {
@@ -94,9 +93,6 @@ export var usuario_model = (sequelize:any, type:any)=>{
                 resolve(token);
             });
         });
-
-        
-
     };
 
     return usuarioModel;
